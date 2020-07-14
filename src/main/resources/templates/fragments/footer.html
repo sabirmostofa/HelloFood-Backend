@@ -10,5 +10,32 @@
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script><script src="js/script.js"></script>
+		crossorigin="anonymous"></script>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script
+		src="https://www.gstatic.com/firebasejs/7.16.0/firebase-analytics.js"></script>
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey : "AIzaSyAwyvtb2R3EiWpACCnJC6comBAJOc-Elz8",
+			authDomain : "hellofood-2019.firebaseapp.com",
+			databaseURL : "https://hellofood-2019.firebaseio.com",
+			projectId : "hellofood-2019",
+			storageBucket : "hellofood-2019.appspot.com",
+			messagingSenderId : "969460676013",
+			appId : "1:969460676013:web:6943e8e7d58ce6edc61d24",
+			measurementId : "G-X8RJK0XPYE"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+	</script>
+
+	<script src="js/script.js"></script>
 </div>

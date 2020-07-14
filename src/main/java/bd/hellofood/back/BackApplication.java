@@ -11,15 +11,7 @@ public class BackApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackApplication.class, args);
-	}
-	
-	
-	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String home(Model model) {
-	model.addAttribute("message", "Hello Spring MVC!!");
-	return "home";
-	}
-	
-	
+	}	
+
 
 }

@@ -1,4 +1,4 @@
-<div th:fragment="footer">
+<div th:fragment="footer" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -37,5 +37,5 @@
 		firebase.analytics();
 	</script>
 
-	<script src="js/script.js"></script>
+	<script th:src="@{/js/script.js}"></script>
 </div>

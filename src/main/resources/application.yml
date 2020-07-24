@@ -1,0 +1,13 @@
+spring:
+  mvc:
+    log-request-details: true
+  thymeleaf:
+    cache: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+
+firebase:
+  db-url: "https://hellofood-2019.firebaseio.com"
+  account-info: "./firebase-sdk.json"

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="fragments/header :: header">
+    <meta charset="UTF-8">
+    <title>Orders By Area</title>
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${heading}"></h1>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Order time</th>
+                <th>Customer name</th>
+                <th>Customer email</th>
+                <th>Order address</th>
+                <th>Order area</th>
+                <th>Order total price</th>
+                <th>Items</th>
+            </tr>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.getTimestamp()}"></td>
+                <td th:text="${order.getUsername()}"></td>
+                <td th:text="${order.getUserEmail()}"></td>
+                <td th:text="${order.getUserAddress()}"></td>
+                <td th:text="${order.getAreaName()}"></td>
+                <td th:text="${order.getTotalPrice()}"></td>
+                <td>
+                    <p th:each="orderItem : ${order.getOrders()}" th:text="${orderItem.toString()}"></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div lang="en" th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

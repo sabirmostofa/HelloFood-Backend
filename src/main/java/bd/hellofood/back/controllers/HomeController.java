@@ -16,8 +16,6 @@ import bd.hellofood.back.services.FirebaseService;
 @Controller
 public class HomeController {
 
-	boolean placeReturned = false;
-	PlaceBean place;
 
 	@Autowired
 	private FirebaseRealtimeService firebaseRealService;
@@ -32,28 +30,8 @@ public class HomeController {
 	public ModelAndView place(Model model) throws InterruptedException {
 
 		ModelAndView modelAndView = new ModelAndView("place");
-
-		placeReturned = false;
-		firebaseRealService.getPlace("Jamalpur", new FirebaseCallback() {
-
-			@Override
-			public void onCallback(PlaceBean p) {
-				// TODO Auto-generated method stub
-				place = p;
-				placeReturned = true;
-
-			}
-		});
-
-		while (!placeReturned) {
-
-		}
-
-		System.out.println("Printing plce from controller: ");
-		System.out.println(place.toString());
-
+		PlaceBean place = firebaseRealService.getPlace("Jamalpur");
 		modelAndView.addObject("place", place);
-
 		return modelAndView;
 
 	}

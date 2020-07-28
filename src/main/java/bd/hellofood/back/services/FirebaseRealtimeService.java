@@ -26,49 +26,45 @@ import bd.hellofood.back.beans.PlaceBean;
 
 @Service
 public class FirebaseRealtimeService {
-	
-	PlaceBean place;
-	
-	
-	@Async
-	public PlaceBean getPlace(String area, FirebaseCallback callback) throws InterruptedException{
-		
 
-		DatabaseReference ref = FirebaseDatabase.getInstance().getReference("placeName/" + area );
+	PlaceBean place;
+	boolean dataFetched;
+
+	public PlaceBean getPlace(String area) throws InterruptedException {
 		
-		//get only once
-        ref.addListenerForSingleValueEvent( new ValueEventListener() {
-			
+		dataFetched = false;
+
+		DatabaseReference ref = FirebaseDatabase.getInstance().getReference("placeName/" + area);
+
+		// get only once
+		ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
 			@Override
 			public void onDataChange(DataSnapshot snapshot) {
 				// TODO Auto-generated method stub
-				
-			     place = snapshot.getValue(PlaceBean.class);
-			     
-			     callback.onCallback(place);
-			     
-			    
-	                System.out.println("printing place: " + place.toString());    
-	                
-	                
-	                
-	               
-				
+
+				place = snapshot.getValue(PlaceBean.class);			
+				dataFetched = true;
+
+				System.out.println("printing place: " + place.toString());
+
 			}
-			
+
 			@Override
 			public void onCancelled(DatabaseError error) {
 				// TODO Auto-generated method stub
 				System.out.println("The read failed: " + error.getCode());
-				
+
 			}
 		});
-        
-     
-        
-        return place;
-        
+		
+		//wait for onDatachange to populate place
+		while(!dataFetched){
+			
+		}
+
+		return place;
+
 	}
-       
 
 }

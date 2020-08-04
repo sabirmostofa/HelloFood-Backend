@@ -10,4 +10,7 @@ logging:
 
 firebase:
   db-url: "https://hellofood-2019.firebaseio.com"
-  account-info: "./firebase-sdk.json"
+  account-info: "firebase-sdk.json"
+  
+server:
+  port: 5000

@@ -1,13 +1,18 @@
 package bd.hellofood.back.services;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.support.ResourcePatternUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -26,9 +31,12 @@ public class FirebaseInit {
 
 		boolean hasBeenInitialized = false;
 		List<FirebaseApp> firebaseApps = FirebaseApp.getApps();
+		
+		
+		
 
-        FileInputStream serviceAccount =
-                new FileInputStream(firebaseConfig.getAccountInfo());
+        InputStream serviceAccount = new ClassPathResource("firebase-sdk.json").getInputStream();
+            
 
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
